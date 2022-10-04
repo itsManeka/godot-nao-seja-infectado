@@ -1,0 +1,125 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://ressources/conversa3.png" type="Texture" id=1]
+[ext_resource path="res://scenes/inimigos/Inimigo.gd" type="Script" id=2]
+[ext_resource path="res://ressources/sounds/blabla.ogg" type="AudioStream" id=3]
+[ext_resource path="res://ressources/conversa4.png" type="Texture" id=4]
+[ext_resource path="res://ressources/conversa.png" type="Texture" id=5]
+[ext_resource path="res://ressources/conversa6.png" type="Texture" id=6]
+[ext_resource path="res://ressources/conversa2.png" type="Texture" id=7]
+[ext_resource path="res://ressources/conversa5.png" type="Texture" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "anima5",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "anima1",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "anima4",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "anima2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "anima0",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "anima3",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 16.5173, 22.3686 )
+
+[node name="Aglomero" type="Area2D"]
+script = ExtResource( 2 )
+infeccao = 25
+pontos = 40
+sprite_text = "anima"
+quantidade_sprites = 6
+obstaculo_grande = true
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -15, 0 )
+frames = SubResource( 13 )
+animation = "anima0"
+playing = true
+
+[node name="Sprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 14, 0 )
+frames = SubResource( 13 )
+animation = "anima0"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="Colisao" type="CollisionShape2D" parent="."]
+position = Vector2( -1.5152, 4.12035 )
+shape = SubResource( 14 )
+
+[node name="Som" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -15, 0 )
+stream = ExtResource( 3 )
+volume_db = -10.0

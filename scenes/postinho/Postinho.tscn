@@ -1,0 +1,92 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://ressources/medidor.png" type="Texture" id=1]
+[ext_resource path="res://ressources/Postinho.png" type="Texture" id=2]
+[ext_resource path="res://scenes/postinho/Postinho.gd" type="Script" id=3]
+[ext_resource path="res://ressources/medidor4.png" type="Texture" id=4]
+[ext_resource path="res://ressources/medidor2.png" type="Texture" id=5]
+[ext_resource path="res://ressources/medidor3.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "med0",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "med1",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "med2",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "med3",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=11]
+height = 82.0
+
+[node name="Postinho" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="Postinho" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -16 )
+frames = SubResource( 1 )
+
+[node name="Medidor" type="AnimatedSprite" parent="."]
+position = Vector2( 20, 3 )
+frames = SubResource( 10 )
+animation = "med0"
+frame = 1
+playing = true
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2( 20, -21 )
+shape = SubResource( 11 )

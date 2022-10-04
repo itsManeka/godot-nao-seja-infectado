@@ -1,0 +1,237 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scenes/jogador/Jogador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ressources/estrada.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ParallaxBackground.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Main.gd" type="Script" id=4]
+[ext_resource path="res://scenes/interface/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ressources/cidade.png" type="Texture" id=6]
+[ext_resource path="res://ressources/nuvens-1.png.png" type="Texture" id=7]
+[ext_resource path="res://ressources/fonts/alterebro-pixel-font.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://ressources/coronga_0.png" type="Texture" id=9]
+[ext_resource path="res://ressources/coronga_1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/interface/PauseMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ressources/nuvens-2.png.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Amanhecer"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:cor_bg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0980392, 0.0901961, 0.203922, 1 ), Color( 0.337255, 0.631373, 0.619608, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Anoitecer"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:cor_bg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.337255, 0.631373, 0.619608, 1 ), Color( 0.0980392, 0.0901961, 0.203922, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Corona:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Corona:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32, 32 ), Vector2( 603, 600 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "game_over"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Corona:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 153, 73 ), Vector2( -132, -201 ) ]
+}
+
+[sub_resource type="AnimatedTexture" id=5]
+frames = 2
+frame_0/texture = ExtResource( 9 )
+frame_1/texture = ExtResource( 10 )
+frame_1/delay_sec = 0.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 4 )
+cor_bg = Color( 0.337255, 0.631373, 0.619608, 1 )
+max_tempo_dificuldade = 1
+
+[node name="Jogador" parent="." instance=ExtResource( 1 )]
+position = Vector2( 75, 140 )
+z_index = 100
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+scroll_ignore_camera_zoom = true
+script = ExtResource( 3 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.55, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Nuvens" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 160, 61 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Nuvens" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 160, 61 )
+texture = ExtResource( 13 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Cidade" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 160, 93 )
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 320, 0 )
+
+[node name="Chao" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 160, 164 )
+texture = ExtResource( 2 )
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Pontos" type="Label" parent="."]
+margin_left = 250.0
+margin_top = 2.0
+margin_right = 385.0
+margin_bottom = 24.0
+grow_horizontal = 2
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Pontos: 0000000000"
+align = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Iniciar" type="Label" parent="."]
+margin_left = 95.0
+margin_top = 60.0
+margin_right = 225.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 2 )
+text = "Aperte pular para iniciar"
+align = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animacao" type="AnimationPlayer" parent="."]
+anims/Amanhecer = SubResource( 6 )
+anims/Anoitecer = SubResource( 3 )
+anims/Finalizar = SubResource( 4 )
+
+[node name="Corona" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 153.0
+margin_top = 73.0
+margin_right = 185.0
+margin_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" parent="." instance=ExtResource( 11 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 97.8527
+margin_top = 62.9018
+margin_right = 225.853
+margin_bottom = 110.902
+[connection signal="area_entered" from="Jogador" to="Jogador" method="_on_colidiu"]
+[connection signal="jogador_infectou" from="Jogador" to="GUI" method="_on_jogador_infectou"]
+[connection signal="pausar" from="GUI" to="." method="_on_GUI_pausar"]
+[connection signal="continuar" from="PauseMenu" to="." method="_on_PauseMenu_continuar"]
+[connection signal="menu" from="PauseMenu" to="." method="_on_PauseMenu_menu"]

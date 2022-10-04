@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ressources/Mascara.png" type="Texture" id=1]
+[ext_resource path="res://scenes/itens/Item.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "flutuar"
+loop = true
+step = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:y_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, 0.0, -10.0, 0.0 ]
+}
+
+[node name="Mascara" type="Area2D"]
+position = Vector2( 0, -9.90525 )
+script = ExtResource( 2 )
+tempo_invencivel = 3
+cura = 0
+y_modifier = -5.5047
+nome = "mascara"
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "stand"
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "flutuar"
+anims/flutuar = SubResource( 3 )

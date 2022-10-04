@@ -1,0 +1,92 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AdMob",
+"language": "GDScript",
+"path": "res://modulos/admob/admob.gd"
+} ]
+_global_script_class_icons={
+"AdMob": "res://modulos/admob/icon.png"
+}
+
+[application]
+
+config/name="Não Seja Infectado!"
+config/description="Desvie das pessoas para não aumentar a barra de infecção.
+Pegue itens para ajudar no percurso.
+Passe pelo postinho do SUS para fazer o teste.
+Tente fazer muitos pontos.
+
+E o mais importante: Não Seja Infectado!"
+run/main_scene="res://scenes/MainMenu.tscn"
+boot_splash/bg_color=Color( 0.14902, 0.258824, 0.129412, 1 )
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+Global="*res://scenes/scripts/Global.gd"
+PGS="*res://modulos/play_game_services/pgs.gd"
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=640
+window/size/test_height=360
+window/stretch/mode="2d"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+pular={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
+quality/reflections/texture_array_reflections=false
+quality/filters/use_nearest_mipmap_filter=true
+environment/default_clear_color=Color( 0.337255, 0.631373, 0.619608, 1 )
+environment/default_environment="res://default_env.tres"

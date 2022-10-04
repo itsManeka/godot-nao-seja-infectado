@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pulo.wav-65a5959f5b48e5323a47ee2f0073fe2b.sample"
+
+[deps]
+
+source_file="res://ressources/sounds/pulo.wav"
+dest_files=[ "res://.import/pulo.wav-65a5959f5b48e5323a47ee2f0073fe2b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

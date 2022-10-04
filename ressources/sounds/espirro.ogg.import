@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/espirro.ogg-2fdb9dfba05e74eb414940941011418a.oggstr"
+
+[deps]
+
+source_file="res://ressources/sounds/espirro.ogg"
+dest_files=[ "res://.import/espirro.ogg-2fdb9dfba05e74eb414940941011418a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
